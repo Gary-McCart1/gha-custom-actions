@@ -65,10 +65,15 @@ jobs:
       - name: Deploy site
         uses: ./.github/actions/deploy-s3-javascript
         env:
-          AWS_ACCESS_KEY_ID: AKLSDJFLKASJDF
+          AWS_ACCESS_KEY_ID: AKLSDJFLKASJDF #Add secret keys in github secrets
           AWS_SECRET_ACCESS_KEY: KADJFLAKSJDF
         with:
           bucket: gha-custom-action-hosting
           dist-folder: ./dist
           # bucket-region: us-east-2
+      - name: Output information
+        run: |
+          echo "Live URL: ${{steps.deploy.outputs.website-url}}"
+
+
   
